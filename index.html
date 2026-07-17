@@ -19,7 +19,6 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -29,7 +28,6 @@
     overflow-x: hidden;
   }
 
-  /* NOISE OVERLAY */
   body::before {
     content: '';
     position: fixed;
@@ -53,534 +51,188 @@
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
   }
-
-  .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
-    color: var(--accent);
-  }
-
+  .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; letter-spacing: 0.05em; color: var(--accent); }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
+  .nav-links a { color: var(--muted); text-decoration: none; font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
   .nav-links a:hover { color: var(--accent); }
 
   /* HERO */
-  #hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 8rem 4rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-glow {
-    position: absolute;
-    width: 600px; height: 600px;
-    border-radius: 50%;
-    filter: blur(120px);
-    pointer-events: none;
-  }
+  #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; }
+  .hero-glow { position: absolute; width: 600px; height: 600px; border-radius: 50%; filter: blur(120px); pointer-events: none; }
   .glow-1 { background: rgba(0,229,255,0.06); top: -100px; right: -100px; }
   .glow-2 { background: rgba(124,58,237,0.08); bottom: -100px; left: -100px; }
-
-  .hero-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--accent);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.2s forwards;
-  }
-
-  h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(3.5rem, 8vw, 7rem);
-    font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.4s forwards;
-  }
-
+  .hero-tag { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.6s 0.2s forwards; }
+  h1 { font-family: 'Syne', sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.03em; opacity: 0; animation: fadeUp 0.6s 0.4s forwards; }
   h1 .name-line { display: block; }
   h1 .name-line.accent { color: var(--accent); }
+  .hero-sub { max-width: 560px; margin-top: 2rem; color: var(--muted); font-size: 1rem; line-height: 1.7; opacity: 0; animation: fadeUp 0.6s 0.6s forwards; }
+  .hero-cta { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.6s 0.8s forwards; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.75rem; border-radius: 2px; font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+  .btn-primary { background: var(--accent); color: #000; font-weight: 500; }
+  .btn-primary:hover { background: #fff; transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .hero-stats { display: flex; gap: 3rem; flex-wrap: wrap; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); opacity: 0; animation: fadeUp 0.6s 1s forwards; }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--accent); }
+  .stat-label { font-size: 0.75rem; color: var(--muted); font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; }
 
-  .hero-sub {
-    max-width: 520px;
-    margin-top: 2rem;
-    color: var(--muted);
-    font-size: 1rem;
-    line-height: 1.7;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.6s forwards;
+  /* SECTIONS */
+  section { padding: 6rem 4rem; max-width: 1200px; margin: 0 auto; }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+  .section-title { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; margin-bottom: 3rem; }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5px; background: var(--border); border: 1.5px solid var(--border); }
+  .project-card { background: var(--card); padding: 2.5rem; position: relative; overflow: hidden; transition: background 0.3s; }
+  .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+  .project-card:hover { background: #16161f; }
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-year { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.15em; margin-bottom: 1rem; }
+  .project-title { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; line-height: 1.3; }
+  .project-desc { color: var(--muted); font-size: 0.875rem; line-height: 1.7; margin-bottom: 1rem; }
+  .project-metrics { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+  .metric { font-family: 'DM Mono', monospace; }
+  .metric-num { color: var(--accent); font-weight: 500; font-size: 0.95rem; display: block; }
+  .metric-label { color: var(--muted); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.75rem; border: 1px solid var(--border); color: var(--muted); border-radius: 1px; transition: all 0.2s; }
+  .tag:hover { border-color: var(--accent); color: var(--accent); }
+  .tag.highlight { border-color: var(--accent2); color: var(--accent2); }
+
+  /* SKILLS */
+  .skills-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--border); border: 1.5px solid var(--border); }
+  .skill-group { background: var(--card); padding: 2rem; }
+  .skill-group-head { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.2rem; }
+  .skill-group-title { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text); }
+  .skill-list { list-style: none; }
+  .skill-list li { font-size: 0.875rem; color: var(--muted); padding: 0.45rem 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 0.5rem; }
+  .skill-list li:last-child { border-bottom: none; }
+  .skill-list li::before { content: '→'; color: var(--accent); font-family: 'DM Mono', monospace; font-size: 0.75rem; }
+
+  /* CERTIFICATIONS */
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+  .cert-card { background: var(--card); border: 1px solid var(--border); padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1.25rem; transition: border-color 0.2s, transform 0.2s; }
+  .cert-card:hover { border-color: var(--accent); transform: translateX(4px); }
+  .cert-icon { width: 40px; height: 40px; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 0.65rem; flex-shrink: 0; }
+  .cisco { background: rgba(0,229,255,0.1); color: var(--accent); }
+  .oracle { background: rgba(245,158,11,0.1); color: var(--accent3); }
+  .infosys { background: rgba(124,58,237,0.1); color: var(--accent2); }
+  .cert-name { font-size: 0.875rem; font-weight: 500; line-height: 1.4; }
+  .cert-issuer { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.2rem; }
+  .cert-date { font-family: 'DM Mono', monospace; font-size: 0.6rem; color: var(--muted); margin-top: 0.15rem; opacity: 0.7; }
+
+  /* ACHIEVEMENTS */
+  .achievements-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--border); border: 1.5px solid var(--border); }
+  .ach-card { background: var(--card); padding: 2.5rem; position: relative; overflow: hidden; }
+  .ach-num { font-family: 'Syne', sans-serif; font-size: 5rem; font-weight: 800; color: var(--border); line-height: 1; position: absolute; right: 1.5rem; top: 1rem; user-select: none; }
+  .ach-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; position: relative; }
+  .ach-desc { color: var(--muted); font-size: 0.875rem; line-height: 1.6; position: relative; }
+
+  /* CONTACT */
+  #contact { text-align: center; padding: 6rem 4rem; position: relative; overflow: hidden; }
+  #contact::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(0,229,255,0.04) 0%, transparent 70%); pointer-events: none; }
+  .contact-email { font-family: 'Syne', sans-serif; font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 700; color: var(--accent); text-decoration: none; transition: opacity 0.2s; display: block; margin: 1.5rem auto; }
+  .contact-email:hover { opacity: 0.7; }
+  .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
+  .contact-link { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0.6rem 1.2rem; border: 1px solid var(--border); transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; }
+  .contact-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  footer { border-top: 1px solid var(--border); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  footer p { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.1em; }
+
+  .divider { height: 1px; background: var(--border); margin: 0 4rem; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  .cgpa-bar { margin-top: 1.5rem; background: var(--border); height: 4px; width: 100%; max-width: 300px; border-radius: 2px; overflow: hidden; }
+  .cgpa-fill { height: 100%; width: 78.5%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; animation: barGrow 1.2s 0.5s both; }
+  @keyframes barGrow { from { width: 0; } to { width: 78.5%; } }
+
+  .edu-card { background: var(--card); border: 1px solid var(--border); padding: 2.5rem; max-width: 600px; }
+  .edu-title { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .edu-inst { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
+  .edu-cgpa { margin-top: 1.2rem; display: flex; align-items: baseline; gap: 0.5rem; }
+  .cgpa-num { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--accent); }
+  .cgpa-denom { font-family: 'DM Mono', monospace; font-size: 0.85rem; color: var(--muted); }
+
+  .about-summary { max-width: 640px; color: var(--muted); font-size: 0.95rem; line-height: 1.8; margin-top: 2rem; }
+
+  /* SIEM / IDS PANEL */
+  .siem-panel { background: #090c11; border: 1px solid var(--border); border-radius: 8px; max-width: 760px; margin: 0 auto; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.45); position: relative; }
+  .siem-panel::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(0,229,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.035) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
   }
+  .siem-header { position: relative; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; padding: 1rem 1.4rem; border-bottom: 1px solid var(--border); background: rgba(13,17,23,0.9); }
+  .siem-header-left { display: flex; align-items: center; gap: 0.6rem; font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.14em; }
+  .siem-dot { width: 9px; height: 9px; border-radius: 50%; background: #ff5f56; box-shadow: 0 0 8px #ff5f56; animation: pulse 1s infinite; flex-shrink: 0; }
+  .siem-dot.clear { background: #27c93f; box-shadow: 0 0 8px #27c93f; animation: none; }
+  .siem-status-text { color: #ff8a80; }
+  .siem-status-text.clear { color: #7bf1a8; }
+  .siem-header-right { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.06em; }
+  .siem-scanbar-wrap { position: relative; display: flex; align-items: center; gap: 0.8rem; padding: 1rem 1.4rem; border-bottom: 1px solid var(--border); }
+  .siem-scanbar-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.08em; white-space: nowrap; }
+  .siem-scanbar { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .siem-scanbar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent2)); transition: width 1.4s ease; }
+  .siem-scanbar-pct { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--accent); min-width: 3.2em; text-align: right; }
+  .siem-log { position: relative; }
+  .siem-row { display: grid; grid-template-columns: auto auto 1fr; gap: 0.9rem; align-items: baseline; padding: 0.75rem 1.4rem; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: 'DM Mono', monospace; font-size: 0.8rem; }
+  .siem-row:last-child { border-bottom: none; }
+  .siem-timestamp { color: var(--muted); font-size: 0.68rem; white-space: nowrap; }
+  .siem-badge { font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.55rem; border-radius: 2px; white-space: nowrap; border: 1px solid; }
+  .siem-badge.match { color: var(--accent); border-color: rgba(0,229,255,0.35); background: rgba(0,229,255,0.08); }
+  .siem-badge.detected { color: var(--accent2); border-color: rgba(124,58,237,0.4); background: rgba(124,58,237,0.1); }
+  .siem-badge.logged { color: var(--accent3); border-color: rgba(245,158,11,0.4); background: rgba(245,158,11,0.1); }
+  .siem-badge.flag { color: #7bf1a8; border-color: rgba(123,241,168,0.4); background: rgba(123,241,168,0.08); }
+  .siem-event-text { color: var(--text); }
+  .siem-event-text.typing::after { content: '▌'; color: var(--accent); animation: pulse 0.8s infinite; margin-left: 2px; }
 
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.6s 0.8s forwards;
+  /* CONTACT FORM */
+  .contact-grid-split { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; text-align: left; margin-top: 3rem; }
+  .contact-left { display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 1.4rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-group label { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .form-group input, .form-group textarea {
+    background: #0a0e17;
+    border: 1px solid #1b2a3a;
+    border-radius: 4px;
+    padding: 0.85rem 1rem;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: vertical;
   }
-
-  .btn {
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,229,255,0.12); }
+  .submit-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.75rem;
-    border-radius: 2px;
+    justify-content: center;
+    gap: 0.6rem;
+    background: var(--accent);
+    color: #001014;
+    border: none;
+    padding: 0.95rem 1.5rem;
     font-family: 'DM Mono', monospace;
     font-size: 0.8rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.2s;
+    font-weight: 600;
+    border-radius: 4px;
     cursor: pointer;
-    border: none;
+    box-shadow: 0 0 24px rgba(0,229,255,0.45);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
-  .btn-primary {
-    background: var(--accent);
-    color: #000;
-    font-weight: 500;
-  }
-  .btn-primary:hover { background: #fff; transform: translateY(-2px); }
-  .btn-outline {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-  }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-
-  .hero-stats {
-    display: flex;
-    gap: 3rem;
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
-    opacity: 0;
-    animation: fadeUp 0.6s 1s forwards;
-  }
-  .stat-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--accent);
-  }
-  .stat-label {
-    font-size: 0.75rem;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  /* SECTIONS */
-  section {
-    padding: 6rem 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.75rem;
-  }
-
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 3rem;
-  }
-
-  /* PROJECTS */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 1.5px;
-    background: var(--border);
-    border: 1.5px solid var(--border);
-  }
-
-  .project-card {
-    background: var(--card);
-    padding: 2.5rem;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s;
-  }
-
-  .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s;
-  }
-
-  .project-card:hover { background: #16161f; }
-  .project-card:hover::before { transform: scaleX(1); }
-
-  .project-year {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-    margin-bottom: 1rem;
-  }
-
-  .project-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-    line-height: 1.3;
-  }
-
-  .project-desc {
-    color: var(--muted);
-    font-size: 0.875rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-  }
-
-  .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.3rem 0.75rem;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    border-radius: 1px;
-    transition: all 0.2s;
-  }
-  .tag:hover { border-color: var(--accent); color: var(--accent); }
-  .tag.highlight { border-color: var(--accent2); color: var(--accent2); }
-
-  .ongoing-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--accent3);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-  .ongoing-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent3);
-    animation: pulse 1.5s infinite;
-  }
-
-  /* SKILLS */
-  .skills-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5px;
-    background: var(--border);
-    border: 1.5px solid var(--border);
-  }
-
-  .skill-group {
-    background: var(--card);
-    padding: 2rem;
-  }
-
-  .skill-group-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.2rem;
-  }
-
-  .skill-list { list-style: none; }
-  .skill-list li {
-    font-size: 0.9rem;
-    color: var(--text);
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .skill-list li:last-child { border-bottom: none; }
-  .skill-list li::before {
-    content: '→';
-    color: var(--accent);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-  }
-
-  /* CERTIFICATIONS */
-  .certs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
-  }
-
-  .cert-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 1.5rem 2rem;
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .cert-card:hover { border-color: var(--accent); transform: translateX(4px); }
-
-  .cert-icon {
-    width: 40px; height: 40px;
-    border-radius: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 0.7rem;
-    flex-shrink: 0;
-  }
-  .cisco { background: rgba(0,229,255,0.1); color: var(--accent); }
-  .oracle { background: rgba(245,158,11,0.1); color: var(--accent3); }
-  .infosys { background: rgba(124,58,237,0.1); color: var(--accent2); }
-
-  .cert-name {
-    font-size: 0.875rem;
-    font-weight: 500;
-    line-height: 1.4;
-  }
-  .cert-issuer {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: 0.2rem;
-  }
-
-  /* ACHIEVEMENTS */
-  .achievements-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5px;
-    background: var(--border);
-    border: 1.5px solid var(--border);
-  }
-
-  .ach-card {
-    background: var(--card);
-    padding: 2.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .ach-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 5rem;
-    font-weight: 800;
-    color: var(--border);
-    line-height: 1;
-    position: absolute;
-    right: 1.5rem;
-    top: 1rem;
-    user-select: none;
-  }
-
-  .ach-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    position: relative;
-  }
-
-  .ach-desc {
-    color: var(--muted);
-    font-size: 0.875rem;
-    line-height: 1.6;
-    position: relative;
-  }
-
-  /* CONTACT */
-  #contact {
-    text-align: center;
-    padding: 6rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  #contact::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at center, rgba(0,229,255,0.04) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .contact-email {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
-    font-weight: 700;
-    color: var(--accent);
-    text-decoration: none;
-    transition: opacity 0.2s;
-    display: block;
-    margin: 1.5rem auto;
-  }
-  .contact-email:hover { opacity: 0.7; }
-
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-
-  .contact-link {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    padding: 0.6rem 1.2rem;
-    border: 1px solid var(--border);
-    transition: all 0.2s;
-  }
-  .contact-link:hover { color: var(--accent); border-color: var(--accent); }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 2rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  footer p {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-  }
-
-  /* DIVIDER */
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 0 4rem;
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  /* SCROLL REVEAL */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s, transform 0.6s;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* CGPA BAR */
-  .cgpa-bar {
-    margin-top: 1.5rem;
-    background: var(--border);
-    height: 4px;
-    width: 100%;
-    max-width: 300px;
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .cgpa-fill {
-    height: 100%;
-    width: 77.9%;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    border-radius: 2px;
-    animation: barGrow 1.2s 0.5s both;
-  }
-  @keyframes barGrow {
-    from { width: 0; }
-    to { width: 77.9%; }
-  }
-
-  .edu-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 2.5rem;
-    max-width: 600px;
-  }
-  .edu-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-  .edu-inst {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .edu-cgpa {
-    margin-top: 1.2rem;
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-  }
-  .cgpa-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--accent);
-  }
-  .cgpa-denom {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
+  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 0 32px rgba(0,229,255,0.65); }
 
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
@@ -589,6 +241,10 @@
     h1 { font-size: 3rem; }
     .skills-container { grid-template-columns: 1fr; }
     .achievements-row { grid-template-columns: 1fr; }
+    .contact-grid-split { grid-template-columns: 1fr; gap: 2rem; }
+    .siem-row { grid-template-columns: 1fr; gap: 0.3rem; padding: 0.75rem 1rem; }
+    .siem-header { padding: 0.85rem 1rem; }
+    .siem-scanbar-wrap { padding: 0.85rem 1rem; }
     footer { flex-direction: column; gap: 1rem; text-align: center; }
     .divider { margin: 0 1.5rem; }
   }
@@ -596,7 +252,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">NA_</div>
   <ul class="nav-links">
@@ -617,28 +272,17 @@
     <span class="name-line">Nukala</span>
     <span class="name-line accent">Akshay</span>
   </h1>
-  <p class="hero-sub">CS + Cybersecurity student at Amrita Vishwa Vidyapeetham. Building intelligent systems at the intersection of security, deep learning, and IoT.</p>
+  <p class="hero-sub">CS + Cybersecurity student at Amrita Vishwa Vidyapeetham. Building intelligent, secure systems at the intersection of network security, deep learning, and IoT — from phishing detection pipelines to real-time crop disease advisory.</p>
   <div class="hero-cta">
-    <a href="https://drive.google.com/file/d/180SNQhS1p47q0N0ZSnhT9GHClOqcKnZi/view?usp=sharing" target="_blank" class="btn btn-primary">↓ Resume PDF</a>
+    <a href="https://drive.google.com/file/d/180SNQhS1p47q0N0ZSnhT9GHClOqcKnZi/view?usp=sharing" target="_blank" class="btn btn-primary">Resume PDF</a>
     <a href="#projects" class="btn btn-outline">View Projects</a>
+    <a href="#contact" class="btn btn-outline">Contact</a>
   </div>
   <div class="hero-stats">
-    <div>
-      <div class="stat-num">3+</div>
-      <div class="stat-label">Projects</div>
-    </div>
-    <div>
-      <div class="stat-num">6</div>
-      <div class="stat-label">Certifications</div>
-    </div>
-    <div>
-      <div class="stat-num">96%</div>
-      <div class="stat-label">Model Accuracy</div>
-    </div>
-    <div>
-      <div class="stat-num">SIH</div>
-      <div class="stat-label">2025 Qualifier</div>
-    </div>
+    <div><div class="stat-num">3+</div><div class="stat-label">Projects</div></div>
+    <div><div class="stat-num">6</div><div class="stat-label">Certifications</div></div>
+    <div><div class="stat-num">99.1%</div><div class="stat-label">Best Model Accuracy</div></div>
+    <div><div class="stat-num">SIH</div><div class="stat-label">2025 Qualifier</div></div>
   </div>
 </div>
 
@@ -646,7 +290,7 @@
 
 <!-- ABOUT / EDUCATION -->
 <section id="about">
-  <p class="section-label reveal">// 01 — Education</p>
+  <p class="section-label reveal">// 01 — About</p>
   <h2 class="section-title reveal">Where I Study</h2>
   <div class="edu-card reveal">
     <div class="edu-inst">Amrita Vishwa Vidyapeetham · Coimbatore · 2023–2027</div>
@@ -657,6 +301,7 @@
     </div>
     <div class="cgpa-bar"><div class="cgpa-fill"></div></div>
   </div>
+  <p class="about-summary reveal">Hands-on experience across AI/ML, IoT, and network security — I've built AI-powered systems for crop disease detection, phishing detection, and face anti-spoofing using TensorFlow and Python, alongside a working foundation in digital forensics tools, cryptography, and secure system design.</p>
 </section>
 
 <div class="divider"></div>
@@ -668,17 +313,23 @@
   <div class="projects-grid">
 
     <div class="project-card reveal">
-      <div class="project-year">2024 — 2025</div>
-      <div class="project-title">Detection of URL Phishing</div>
+      <div class="project-year">2026</div>
+      <div class="project-title">Crop Disease Prediction & Advisory</div>
       <div class="project-desc">
-        End-to-end phishing detection pipeline comparing 8 ML/DL models — Decision Tree, SVM, MLP, Gradient Boosting, XGBoost, DNN, CNN, CNN-DNN — achieving <strong style="color:var(--accent)">96–97% test accuracy</strong>. Includes real-time URL input module for live predictions.
+        AI-powered IoT crop disease detection system using TinyLite-Net (MobileNetV2) with Transfer Learning, Data Augmentation, and Hyperparameter Tuning. Fuses ESP32-CAM leaf imagery with DHT11 humidity and leaf-wetness sensor data via Sensor Fusion for a real-time decision-support and advisory dashboard.
+      </div>
+      <div class="project-metrics">
+        <div class="metric"><span class="metric-num">99.10%</span><span class="metric-label">Val Accuracy</span></div>
+        <div class="metric"><span class="metric-num">99.18%</span><span class="metric-label">Precision</span></div>
+        <div class="metric"><span class="metric-num">99.06%</span><span class="metric-label">Recall</span></div>
       </div>
       <div class="project-tags">
         <span class="tag">Python</span>
-        <span class="tag">Scikit-learn</span>
-        <span class="tag">XGBoost</span>
-        <span class="tag highlight">CNN-DNN</span>
-        <span class="tag">Feature Engineering</span>
+        <span class="tag">MobileNetV2</span>
+        <span class="tag highlight">IoT</span>
+        <span class="tag">ESP32-CAM</span>
+        <span class="tag">MQTT / REST</span>
+        <span class="tag">SIH 2025</span>
       </div>
     </div>
 
@@ -686,29 +337,33 @@
       <div class="project-year">2025</div>
       <div class="project-title">Fake Biometric Face Detection</div>
       <div class="project-desc">
-        CNN-based deepfake detection using Xception architecture on FaceForensics++ dataset. MTCNN for face detection, bounding box rendering, and real/fake confidence score display on input images.
+        CNN-based face anti-spoofing system using the Xception architecture trained on FaceForensics++. MTCNN handles real-time face localization, with bounding boxes and live real/fake confidence scores rendered on input images.
       </div>
       <div class="project-tags">
         <span class="tag">Python</span>
         <span class="tag">Xception</span>
         <span class="tag highlight">Deep Learning</span>
         <span class="tag">MTCNN</span>
+        <span class="tag">OpenCV</span>
         <span class="tag">FaceForensics++</span>
       </div>
     </div>
 
     <div class="project-card reveal">
-      <div class="project-year">2026</div>
-      <div class="project-title">Crop Disease Prediction & Advisory</div>
+      <div class="project-year">2024 — 2025</div>
+      <div class="project-title">Detection of URL Phishing</div>
       <div class="project-desc">
-        AI-powered system for farmers using MobileNetV2 (TinyLite-Net) for leaf disease detection from images. Integrates IoT soil moisture + humidity sensors with the vision model for real-time field confidence. Includes disease alerts and treatment/irrigation advisory.
+        End-to-end phishing detection pipeline comparing 8 ML/DL models — Decision Tree, SVM, MLP, Gradient Boosting, XGBoost, DNN, CNN, CNN-DNN — with URL feature extraction, feature importance analysis, and dimensionality reduction. Includes a real-time URL input module for live predictions.
+      </div>
+      <div class="project-metrics">
+        <div class="metric"><span class="metric-num">97%</span><span class="metric-label">Test Accuracy</span></div>
       </div>
       <div class="project-tags">
         <span class="tag">Python</span>
-        <span class="tag">MobileNetV2</span>
-        <span class="tag highlight">IoT</span>
-        <span class="tag">MERN Stack</span>
-        <span class="tag">SIH 2025</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">XGBoost</span>
+        <span class="tag highlight">CNN-DNN</span>
+        <span class="tag">Feature Engineering</span>
       </div>
     </div>
 
@@ -722,45 +377,79 @@
   <p class="section-label reveal">// 03 — Skills</p>
   <h2 class="section-title reveal">What I Know</h2>
   <div class="skills-container reveal">
+
     <div class="skill-group">
-      <div class="skill-group-title">Languages</div>
+      <div class="skill-group-head">
+        <div class="skill-group-title">Languages & Fundamentals</div>
+      </div>
       <ul class="skill-list">
-        <li>C++</li>
-        <li>Python</li>
+        <li>C++ / Python</li>
         <li>HTML / CSS</li>
+        <li>Data Structures & Algorithms</li>
+        <li>OOP · SQL</li>
       </ul>
     </div>
+
     <div class="skill-group">
-      <div class="skill-group-title">AI / ML / DL</div>
+      <div class="skill-group-head">
+        <div class="skill-group-title">AI / ML / DL</div>
+      </div>
       <ul class="skill-list">
-        <li>Machine Learning</li>
-        <li>Deep Learning</li>
-        <li>Prompt Engineering</li>
+        <li>Machine Learning · Deep Learning</li>
+        <li>TensorFlow · Keras</li>
         <li>Generative AI</li>
+        <li>Prompt Engineering</li>
       </ul>
     </div>
+
     <div class="skill-group">
-      <div class="skill-group-title">Cyber Security</div>
+      <div class="skill-group-head">
+        <div class="skill-group-title">Cyber Security</div>
+      </div>
       <ul class="skill-list">
+        <li>Network & Web Security</li>
         <li>Classical Cryptography</li>
-        <li>Networking</li>
         <li>Ethical Hacking</li>
-        <li>IoT Security</li>
+        <li>Digital Forensics · IoT Security</li>
       </ul>
     </div>
-  </div>
-      <div class="skill-group">
-      <div class="skill-group-title">Cyber Security tools</div>
+
+    <div class="skill-group">
+      <div class="skill-group-head">
+        <div class="skill-group-title">Networking & OS</div>
+      </div>
       <ul class="skill-list">
-        <li>Burbsuite</li>
-        <li>Wireshark</li>
-        <li>Ftk imager</li>
-        <li>Data Recovery</li>
-        <li>Log Viewery</li>
-        <li>Autopsy</li>
-        <li>Packet Tracer</li>
+        <li>TCP/IP · OSI Model</li>
+        <li>Computer Networks · Routing</li>
+        <li>Linux</li>
+        <li>Windows</li>
       </ul>
     </div>
+
+    <div class="skill-group">
+      <div class="skill-group-head">
+        <div class="skill-group-title">IoT & Hardware</div>
+      </div>
+      <ul class="skill-list">
+        <li>ESP32-CAM · Arduino IDE</li>
+        <li>MQTT · HTTP/REST APIs</li>
+        <li>Sensor Fusion</li>
+        <li>Wi-Fi Communication</li>
+      </ul>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-head">
+        <div class="skill-group-title">Security Tools</div>
+      </div>
+      <ul class="skill-list">
+        <li>Burp Suite · Wireshark</li>
+        <li>FTK Imager · Autopsy</li>
+        <li>Cisco Packet Tracer</li>
+        <li>Log Viewer · Data Recovery</li>
+      </ul>
+    </div>
+
   </div>
 </section>
 
@@ -776,6 +465,7 @@
       <div>
         <div class="cert-name">Introduction to Cyber Security</div>
         <div class="cert-issuer">Cisco</div>
+        <div class="cert-date">Mar 2024</div>
       </div>
     </div>
     <div class="cert-card reveal">
@@ -783,27 +473,31 @@
       <div>
         <div class="cert-name">Ethical Hacking</div>
         <div class="cert-issuer">Cisco</div>
+        <div class="cert-date">May 2024</div>
       </div>
     </div>
     <div class="cert-card reveal">
       <div class="cert-icon oracle">OCI</div>
       <div>
-        <div class="cert-name">OCI AI Foundation Associate</div>
-        <div class="cert-issuer">Oracle</div>
+        <div class="cert-name">OCI AI Foundations Associate</div>
+        <div class="cert-issuer">Oracle · 1Z0-1122-25</div>
+        <div class="cert-date">Sep 2025</div>
       </div>
     </div>
     <div class="cert-card reveal">
       <div class="cert-icon oracle">OCI</div>
       <div>
-        <div class="cert-name">OCI Gen AI Professional</div>
-        <div class="cert-issuer">Oracle</div>
+        <div class="cert-name">OCI Generative AI Professional</div>
+        <div class="cert-issuer">Oracle · 1Z0-1127-25</div>
+        <div class="cert-date">Sep 2025</div>
       </div>
     </div>
     <div class="cert-card reveal">
       <div class="cert-icon oracle">OCI</div>
       <div>
         <div class="cert-name">OCI Vector Search Professional</div>
-        <div class="cert-issuer">Oracle</div>
+        <div class="cert-issuer">Oracle · 1Z0-184-25</div>
+        <div class="cert-date">Oct 2025</div>
       </div>
     </div>
     <div class="cert-card reveal">
@@ -811,6 +505,7 @@
       <div>
         <div class="cert-name">Introduction to NLP</div>
         <div class="cert-issuer">Infosys</div>
+        <div class="cert-date">Aug 2025</div>
       </div>
     </div>
   </div>
@@ -838,27 +533,70 @@
 
 <div class="divider"></div>
 
-<!-- CONTACT -->
-<section id="contact">
-  <p class="section-label">// 06 — Contact</p>
-  <h2 class="section-title">Let's Connect</h2>
-  <a href="mailto:nukalaakshay789@gmail.com" class="contact-email">nukalaakshay789@gmail.com</a>
-  <p style="color:var(--muted); font-size:0.875rem;">+91-8317506993 · Gadwal, Telangana</p>
-  <div class="contact-links">
-    <a href="https://www.linkedin.com/in/akshay-nukala-1322b4289/" target="_blank" class="contact-link">LinkedIn</a>
-    <a href="https://github.com/Nukalaakshay29" target="_blank" class="contact-link">GitHub</a>
-    <a href="https://drive.google.com/file/d/180SNQhS1p47q0N0ZSnhT9GHClOqcKnZi/view?usp=sharing" target="_blank" class="contact-link">Resume PDF</a>
+<!-- SIEM / IDS SCAN -->
+<section id="terminal-section">
+  <p class="section-label reveal">// 06 — Threat Intelligence</p>
+  <h2 class="section-title reveal">Live Scan: akshay.profile</h2>
+  <div class="siem-panel reveal" id="decrypt-terminal">
+    <div class="siem-header">
+      <div class="siem-header-left">
+        <span class="siem-dot" id="siem-dot"></span>
+        <span class="siem-status-text" id="siem-status-text">SCANNING</span>
+      </div>
+      <div class="siem-header-right">SOURCE: akshay.profile &nbsp;·&nbsp; ENGINE: profile-ids v2.0</div>
+    </div>
+    <div class="siem-scanbar-wrap">
+      <span class="siem-scanbar-label">ANALYZING</span>
+      <div class="siem-scanbar"><div class="siem-scanbar-fill" id="decrypt-fill"></div></div>
+      <span class="siem-scanbar-pct" id="decrypt-percent">0%</span>
+    </div>
+    <div class="siem-log" id="decrypt-lines"></div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">// 07 — Contact</p>
+  <h2 class="section-title">Let's Connect</h2>
+
+  <div class="contact-grid-split">
+    <div class="contact-left">
+      <a href="mailto:nukalaakshay789@gmail.com" class="contact-email" style="margin: 0;">nukalaakshay789@gmail.com</a>
+      <p style="color:var(--muted); font-size:0.875rem;">+91-8317506993 · Gadwal, Telangana</p>
+      <div class="contact-links" style="justify-content: flex-start;">
+        <a href="https://www.linkedin.com/in/akshay-nukala-1322b4289/" target="_blank" class="contact-link">LinkedIn</a>
+        <a href="https://github.com/Nukalaakshay29" target="_blank" class="contact-link">GitHub</a>
+        <a href="https://drive.google.com/file/d/180SNQhS1p47q0N0ZSnhT9GHClOqcKnZi/view?usp=sharing" target="_blank" class="contact-link">Resume PDF</a>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contact-form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Message</button>
+      <p id="form-status" style="font-family:'DM Mono',monospace; font-size:0.75rem; color:var(--muted); min-height:1.2em;"></p>
+    </form>
+  </div>
+</section>
+
 <footer>
-  <p>© 2025 Nukala Akshay — All rights reserved</p>
+  <p>© 2026 Nukala Akshay — All rights reserved</p>
   <p>Built with HTML · CSS · JS</p>
 </footer>
 
 <script>
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
@@ -869,6 +607,127 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
+
+  // SIEM-style scan reveal for the "Threat Intelligence" section
+  const decryptData = [
+    { badge: 'match', label: 'MATCH', value: 'Identity resolved — Nukala Akshay' },
+    { badge: 'match', label: 'MATCH', value: 'Program: B.Tech CSE — Cybersecurity, Amrita Vishwa Vidyapeetham' },
+    { badge: 'detected', label: 'DETECTED', value: 'Skill signature: Python · ML/DL · IoT · Network Security' },
+    { badge: 'logged', label: 'LOGGED', value: 'Build history: Phishing Detector, Face Anti-Spoofing, IoT Crop Advisory' },
+    { badge: 'flag', label: 'FLAG', value: 'Status: open to AI/ML, Cybersecurity & SDE roles' }
+  ];
+
+  function siemTimestamp(offsetMs) {
+    const t = new Date(offsetMs);
+    const mm = String(t.getUTCMinutes()).padStart(2, '0');
+    const ss = String(t.getUTCSeconds()).padStart(2, '0');
+    const ms = String(t.getUTCMilliseconds()).padStart(3, '0');
+    return `00:${mm}:${ss}.${ms}`;
+  }
+
+  function typeInto(el, text, speed, done) {
+    el.classList.add('typing');
+    let i = 0;
+    (function step() {
+      if (i <= text.length) {
+        el.textContent = text.slice(0, i);
+        i++;
+        setTimeout(step, speed);
+      } else {
+        el.classList.remove('typing');
+        if (done) done();
+      }
+    })();
+  }
+
+  function revealSiemLog(container, lines, idx) {
+    idx = idx || 0;
+    if (idx >= lines.length) {
+      const dot = document.getElementById('siem-dot');
+      const statusText = document.getElementById('siem-status-text');
+      if (dot) dot.classList.add('clear');
+      if (statusText) { statusText.textContent = 'CLEAR'; statusText.classList.add('clear'); }
+
+      const summary = document.createElement('div');
+      summary.className = 'siem-row';
+      summary.innerHTML = `<span class="siem-timestamp">${siemTimestamp(idx * 900 + 200)}</span><span class="siem-badge flag">SUMMARY</span><span class="siem-event-text">Scan complete — 0 threats found · ${lines.length} records verified</span>`;
+      container.appendChild(summary);
+      return;
+    }
+    const row = document.createElement('div');
+    row.className = 'siem-row';
+
+    const ts = document.createElement('span');
+    ts.className = 'siem-timestamp';
+    ts.textContent = siemTimestamp(idx * 900 + 200);
+
+    const badge = document.createElement('span');
+    badge.className = 'siem-badge ' + lines[idx].badge;
+    badge.textContent = lines[idx].label;
+
+    const value = document.createElement('span');
+    value.className = 'siem-event-text';
+
+    row.appendChild(ts);
+    row.appendChild(badge);
+    row.appendChild(value);
+    container.appendChild(row);
+
+    typeInto(value, lines[idx].value, 14, () => {
+      setTimeout(() => revealSiemLog(container, lines, idx + 1), 280);
+    });
+  }
+
+  const decryptTerminal = document.getElementById('decrypt-terminal');
+  if (decryptTerminal) {
+    let decryptStarted = false;
+    const decryptObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !decryptStarted) {
+          decryptStarted = true;
+          const fill = document.getElementById('decrypt-fill');
+          const percentText = document.getElementById('decrypt-percent');
+          const linesContainer = document.getElementById('decrypt-lines');
+
+          setTimeout(() => { fill.style.width = '100%'; }, 200);
+          const duration = 1200;
+          const start = performance.now();
+          (function tick(now) {
+            const pct = Math.min(100, Math.round(((now - start) / duration) * 100));
+            percentText.textContent = pct + '%';
+            if (pct < 100) requestAnimationFrame(tick);
+          })(start);
+
+          setTimeout(() => revealSiemLog(linesContainer, decryptData), duration + 300);
+          decryptObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    decryptObserver.observe(decryptTerminal);
+  }
+
+  // Contact form -> opens the visitor's email app with a pre-filled message
+  const contactForm = document.getElementById('contact-form');
+  const formStatus = document.getElementById('form-status');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        formStatus.textContent = 'Please fill in all fields.';
+        return;
+      }
+
+      const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+      window.location.href = `mailto:nukalaakshay789@gmail.com?subject=${subject}&body=${body}`;
+
+      formStatus.textContent = 'Opening your email app…';
+    });
+  }
 </script>
 </body>
 </html>
